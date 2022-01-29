@@ -26,7 +26,7 @@ const ActionFetchToilets = async ({ ignoredToilets, location }) => {
     },
   ];
 
-  const params = {
+  /*   const params = {
     latitude: location.latitude,
     longitude: location.longitude,
     ignoredToilets,
@@ -38,6 +38,6 @@ const ActionFetchToilets = async ({ ignoredToilets, location }) => {
       return Promise.reject(response.error);
     });
 
-  return res;
+  return res; */
 };
 export default ActionFetchToilets;
