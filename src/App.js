@@ -11,7 +11,7 @@ function App() {
   const {error: errorLocation, location} = useLocation();
   const {error: toiletError, nearestToilets} = useNearestToilets(location);
 
-  // TODO: Take last toilet
+  // TODO: Take closest toilet
   const toilet = nearestToilets[0];
 
   return (
