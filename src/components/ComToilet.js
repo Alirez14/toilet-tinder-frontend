@@ -8,8 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StyleConst from "../style/StyleConst";
 
-
-const ComToilet = ({toilet}) => {
+const ComToilet = ({ toilet }) => {
   return (
     <Card
       sx={{
@@ -20,7 +19,7 @@ const ComToilet = ({toilet}) => {
     >
       <CardMedia
         component="img"
-        height="140"
+        height="200"
         image={toilet?.image}
         alt="green iguana"
       />

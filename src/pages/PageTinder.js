@@ -1,7 +1,7 @@
-import ComToilet from "./components/ComToilet";
-import useLocation from "./hooks/useLocation";
-import useNearestToilets from "./hooks/useNearestToilets";
-import Compass from "./components/Compass";
+import ComToilet from "../components/ComToilet";
+import useLocation from "../hooks/useLocation";
+import useNearestToilets from "../hooks/useNearestToilets";
+import Compass from "../components/Compass";
 import { Container } from "@mui/material";
 
 function PageTinder() {
@@ -12,7 +12,15 @@ function PageTinder() {
   const toilet = nearestToilets[0];
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center" }}>
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "transparent",
+      }}
+    >
       <Compass currentLocation={location} toiletLocation={toilet?.location} />
       <ComToilet toilet={toilet} />
     </Container>
