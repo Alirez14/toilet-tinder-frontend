@@ -1,6 +1,8 @@
 
 
 export const toiletBearing = function(currentLocation, toiletLocation) {
+    if (!currentLocation || !toiletLocation) return null;
+
     const {
         latitude: currLat,
         longitude: currLong,
@@ -20,6 +22,8 @@ export const toiletBearing = function(currentLocation, toiletLocation) {
 
 
 export const distance = function(currentLocation, toiletLocation) {
+    if (!currentLocation || !toiletLocation) return null;
+
     const {
         latitude: currLat,
         longitude: currLong,
