@@ -6,8 +6,19 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StyleConst from "../style/StyleConst";
+import useLocation from "../hooks/useLocation";
+import useNearestToilets from "../hooks/useNearestToilets";
+import * as locationCalculations from "../helpers/locationCalculations";
 
 export default function ComToilet() {
+  const {error, location} = useLocation();
+  const {error, nearestToilets} = useNearestToilets(location);
+
+  const toilet = nearestToilets[0];
+
+  const distance = locationCalculations.distance(location, toilet.location);
+  const bearing = locationCalculations.toiletBearing(location, toilet.location);
+
   return (
     <Card
       sx={{
