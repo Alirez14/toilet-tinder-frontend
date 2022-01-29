@@ -24,6 +24,7 @@ const ComToilet = ({ appendToIgnoredToilets, toilet }) => {
     >
       <ComRating open={open} setOpen={setOpen} toilet={toilet} />
       <CardMedia
+        key={toilet?.id}
         component="img"
         height="200"
         image="https://source.unsplash.com/random/?toilet"
