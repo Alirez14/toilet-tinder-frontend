@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ComToilet from "./components/ComToilet";
 import StyleConst from "./style/StyleConst";
+import PageTinder from "./pages/PageTinder";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       className="App"
       style={{ backgroundColor: StyleConst.Colors.background }}
     >
-      <ComToilet></ComToilet>
+      <PageTinder></PageTinder>
     </div>
   );
 }
