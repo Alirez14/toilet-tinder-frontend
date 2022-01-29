@@ -39,15 +39,18 @@ const ComToilet = ({ appendToIgnoredToilets, toilet }) => {
             {toilet?.openingHours}
           </Typography>
         </Box>
-        {toilet?.ratings.map((rating) => {
-          return (
-            <ComToiletRating
-              key={rating.id}
-              grade={rating.grade}
-              text={rating.text}
-            />
-          );
-        })}
+        {toilet?.ratings
+          .sort((ratingA, ratingB) => ratingB.id - ratingA.id)
+          .map((rating) => {
+            return (
+              <ComToiletRating
+                key={rating.id}
+                grade={rating.grade}
+                text={rating.text}
+              />
+            );
+          })
+        }
       </CardContent>
       <CardActions sx={{ justifyContent: "space-around" }}>
         <Button size="medium" onClick={() => setOpen(true)}>

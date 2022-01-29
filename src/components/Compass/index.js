@@ -50,6 +50,7 @@ const Compass = function (props) {
           flexDirection: 'row',
           flexWrap: 'nowrap',
           left: `-${headingLeft}px`,
+          transition: 'left 0.5s',
         }}
       >
         <Section
