@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Box} from "@mui/material";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,7 +10,7 @@ import StyleConst from "../style/StyleConst";
 import ComToiletRating from "./ComToiletRating";
 import ComRating from "./ComRating";
 
-const ComToilet = ({appendToIgnoredToilets, toilet}) => {
+const ComToilet = ({ appendToIgnoredToilets, toilet }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,15 +22,11 @@ const ComToilet = ({appendToIgnoredToilets, toilet}) => {
         color: StyleConst.Colors.text,
       }}
     >
-      <ComRating
-        open={open}
-        setOpen={setOpen}
-        toilet={toilet}
-      />
+      <ComRating open={open} setOpen={setOpen} toilet={toilet} />
       <CardMedia
         component="img"
         height="200"
-        image={toilet?.image}
+        image="https://source.unsplash.com/random/?toilet"
         alt="green iguana"
       />
       <CardContent>
@@ -42,7 +38,7 @@ const ComToilet = ({appendToIgnoredToilets, toilet}) => {
             {toilet?.openingHours}
           </Typography>
         </Box>
-        {toilet?.ratings.map(rating => {
+        {toilet?.ratings.map((rating) => {
           return (
             <ComToiletRating
               key={rating.id}
