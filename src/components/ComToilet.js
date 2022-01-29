@@ -11,8 +11,8 @@ import useNearestToilets from "../hooks/useNearestToilets";
 import * as locationCalculations from "../helpers/locationCalculations";
 
 export default function ComToilet() {
-  const {error, location} = useLocation();
-  const {error, nearestToilets} = useNearestToilets(location);
+  const { errorLocation, location } = useLocation();
+  const { error, nearestToilets } = useNearestToilets(location);
 
   const toilet = nearestToilets[0];
 
@@ -25,7 +25,6 @@ export default function ComToilet() {
         maxWidth: 500,
         backgroundColor: StyleConst.Colors.card,
         color: StyleConst.Colors.text,
-        alignSelf: "center",
       }}
     >
       <CardMedia
