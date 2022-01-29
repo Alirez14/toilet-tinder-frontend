@@ -13,7 +13,8 @@ const ComToilet = ({ toilet }) => {
   return (
     <Card
       sx={{
-        width: "50%",
+        width: "100%",
+        maxWidth: "400px",
         backgroundColor: StyleConst.Colors.card,
         color: StyleConst.Colors.text,
       }}
