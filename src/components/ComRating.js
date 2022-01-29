@@ -1,43 +1,113 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import {Box, Modal} from '@mui/material';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import TextField from "@mui/material/TextField";
 import StyleConst from "../style/StyleConst";
+import Button from "@mui/material/Button";
 
-const ComRating = () => {
-  const [value, setValue] = React.useState(0);
+const ComRating = ({open, setOpen}) => {
+  const [grade, setGrade] = React.useState(0);
+  const [text, setText] = React.useState('');
+
+  const sendRating = () => {
+    console.log(grade, text);
+
+    // TODO: Send rating to server
+
+    setOpen(false);
+  };
 
   return (
-    <Box
-      sx={{
-        '& > legend': { mt: 2 },
-        color: StyleConst.Colors.text
-      }}
-      container
-      direction="column"
-      alignItems="left"
+    <Modal
+      open={open}
+      onClose={() => setOpen(false)}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
     >
-      <Typography component="legend">Rate this toilet!</Typography>
-      <Rating
-        name="simple-controlled"
-        value={value}
-        onChange={(event, grade) => {
-          setValue(grade);
-          console.log(grade);
-        }}
-      />
-      <TextField
+      <Box
         sx={{
-          color: StyleConst.Colors.text,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
         }}
-        id="rating-review"
-        label="Give a personal feedback"
-        variant="outlined"
-        fullWidth
-      />
-    </Box>
-
+      >
+        <Box
+          sx={{
+            bgcolor: 'white',
+            width: '300px',
+            p: '20px',
+            borderRadius: '10px',
+          }}
+        >
+          <Box
+            sx={{
+              color: StyleConst.Colors.text
+            }}
+            container
+            direction="column"
+            alignItems="left"
+          >
+            <Typography
+              component="legend"
+              mb={2}
+              fontSize={24}
+              fontWeight="bold"
+              color={"black"}
+            >
+              Rate this toilet!
+            </Typography>
+            <Rating
+              name="simple-controlled"
+              value={grade}
+              onChange={(_, grade) => setGrade(grade)}
+            />
+            <TextField
+              sx={{
+                mt: 2
+              }}
+              id="rating-review"
+              label="Give a personal feedback"
+              variant="outlined"
+              fullWidth
+              value={text}
+              onChange={event => setText(event.target.value)}
+            />
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'rot',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Button
+                size="medium"
+                sx={{
+                  mt: 2,
+                }}
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                size="medium"
+                sx={{
+                  mt: 2,
+                }}
+                onClick={sendRating}
+              >
+                Send
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Modal>
   );
 };
+
+
 export default ComRating;

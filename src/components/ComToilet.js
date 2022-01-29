@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Box } from "@mui/material";
+import React, {useState} from "react";
+import {Box} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -8,8 +8,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StyleConst from "../style/StyleConst";
 import ComToiletRating from "./ComToiletRating";
+import ComRating from "./ComRating";
 
-const ComToilet = ({ toilet }) => {
+const ComToilet = ({toilet}) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <Card
       sx={{
@@ -19,6 +22,10 @@ const ComToilet = ({ toilet }) => {
         color: StyleConst.Colors.text,
       }}
     >
+      <ComRating
+        open={open}
+        setOpen={setOpen}
+      />
       <CardMedia
         component="img"
         height="200"
@@ -45,6 +52,7 @@ const ComToilet = ({ toilet }) => {
         })}
       </CardContent>
       <CardActions sx={{ justifyContent: "space-around" }}>
+        <Button size="medium" onClick={() => setOpen(true)}>Rate</Button>
         <Button size="medium">Next</Button>
       </CardActions>
     </Card>
