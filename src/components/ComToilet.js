@@ -14,6 +14,7 @@ export default function ComToilet() {
         maxWidth: 500,
         backgroundColor: StyleConst.Colors.card,
         color: StyleConst.Colors.text,
+        alignSelf: "center",
       }}
     >
       <CardMedia
