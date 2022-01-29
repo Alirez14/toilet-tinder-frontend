@@ -15,10 +15,12 @@ const ActionFetchToilets = async ({ ignoredToilets, location }) => {
       },
       ratings: [
         {
+          id: 1,
           grade: 4,
           text: "Lorem ipsum dolor sit erat",
         },
         {
+          id: 2,
           grade: 2,
           text: "Lorem ipsum dolor sit erat",
         },

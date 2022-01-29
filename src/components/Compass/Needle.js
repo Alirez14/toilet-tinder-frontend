@@ -1,4 +1,5 @@
 import {Box} from "@mui/material";
+import StyleConst from "../../style/StyleConst";
 
 
 export const sizes = {
@@ -34,7 +35,7 @@ const Needle = function ({color, size}) {
     >
       <Box
         sx={{
-          bgcolor: color ?? 'black',
+          bgcolor: color ?? StyleConst.Colors.darkText,
           height: lineHeights[size] ?? 35,
           width: `${thickness[size] ?? 1}px`,
           borderRadius: '3px',
@@ -46,7 +47,7 @@ const Needle = function ({color, size}) {
 
 
 Needle.defaultProps = {
-  color: 'black',
+  color: StyleConst.Colors.darkText,
   size: sizes.SMALL,
 };
 

@@ -1,4 +1,5 @@
 import {Box} from "@mui/material";
+import StyleConst from "../../style/StyleConst";
 import Needle, {sizes} from "./Needle";
 
 
@@ -20,6 +21,7 @@ const TargetNeedle = function ({distance}) {
       <Box
         sx={{
           fontSize: 14,
+          color: StyleConst.Colors.darkText,
           mt: '2px',
         }}
       >

@@ -4,8 +4,13 @@ import PageTinder from "./pages/PageTinder";
 
 function App() {
   return (
-    <div className="App" style={{}}>
-      <PageTinder></PageTinder>
+    <div
+      className="App"
+      style={{
+        backgroundColor: StyleConst.Colors.background,
+      }}
+    >
+      <PageTinder />
     </div>
   );
 }

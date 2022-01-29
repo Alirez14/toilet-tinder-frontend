@@ -18,7 +18,6 @@ function PageTinder() {
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "transparent",
       }}
     >
       <Compass currentLocation={location} toiletLocation={toilet?.location} />

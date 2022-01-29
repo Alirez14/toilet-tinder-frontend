@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StyleConst from "../style/StyleConst";
+import ComToiletRating from "./ComToiletRating";
 
 const ComToilet = ({ toilet }) => {
   return (
@@ -32,9 +33,17 @@ const ComToilet = ({ toilet }) => {
             {toilet?.openingHours}
           </Typography>
         </Box>
+        {toilet?.ratings.map(rating => {
+          return (
+            <ComToiletRating
+              key={rating.id}
+              grade={rating.grade}
+              text={rating.text}
+            />
+          );
+        })}
       </CardContent>
       <CardActions sx={{ justifyContent: "space-around" }}>
-        <Button size="medium">Start</Button>
         <Button size="medium">Next</Button>
       </CardActions>
     </Card>
