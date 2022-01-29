@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const ActionFetchToilets = async ({ ignoredToilets, location }) => {
-  // Mock code until API is finished
+
+const mockData = () => {
   return [
     {
       id: 1,
@@ -50,20 +50,24 @@ const ActionFetchToilets = async ({ ignoredToilets, location }) => {
       ],
     },
   ];
+};
 
-  /*   const params = {
+
+const ActionFetchToilets = async ({ ignoredToilets, location }) => {
+  // Add for testing
+  // mockData();
+
+  const params = {
     latitude: location.latitude,
     longitude: location.longitude,
-    ignoredToilets,
+    toiletIdsToSkip: ignoredToilets,
   };
 
-  const res = await axios
+  return await axios
     .post("/toilets/getNearestThreeToilets", params)
+    .then(response => Promise.resolve(response.data))
+    .catch(response => Promise.reject(response.error));
+}
 
-    .catch((response) => {
-      return Promise.reject(response.error);
-    });
 
-  return res; */
-};
 export default ActionFetchToilets;

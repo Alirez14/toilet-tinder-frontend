@@ -10,14 +10,18 @@ import ActionCreateRating from "../action/ActionCreateRating";
 const ComRating = ({open, setOpen, toilet}) => {
   const [grade, setGrade] = React.useState(0);
   const [comment, setComment] = React.useState('');
+  const [error, setError] = React.useState(null);
 
   const sendRating = () => {
+    setError(null);
+
     ActionCreateRating({
       comment,
       grade,
       toilet,
     })
-      .then(() => setOpen(false));
+      .then(() => setOpen(false))
+      .catch(setError);
   };
 
   return (
@@ -53,6 +57,16 @@ const ComRating = ({open, setOpen, toilet}) => {
             direction="column"
             alignItems="left"
           >
+            {!!error &&
+              <Typography
+                mb={2}
+                fontSize={16}
+                fontWeight="medium"
+                color={"red"}
+              >
+                {error}
+              </Typography>
+            }
             <Typography
               component="legend"
               mb={2}

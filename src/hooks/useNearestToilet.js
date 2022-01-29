@@ -11,17 +11,9 @@ const useNearestToilet = location => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const toilets = await ActionFetchToilets({ location, ignoredToilets });
-        setNearestToilets(toilets);
-      } catch (e) {
-        setError(e);
-      }
-      // ...
-    }
-
-    fetchData();
+    ActionFetchToilets({location, ignoredToilets})
+      .then(setNearestToilets)
+      .catch(setError);
   }, [ignoredToilets, location]);
 
   const toilet = nearestToilets.filter(toilet => !ignoredToilets.includes(toilet.id))[0];
