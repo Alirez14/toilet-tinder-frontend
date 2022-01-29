@@ -1,15 +1,12 @@
 import ComToilet from "../components/ComToilet";
 import useLocation from "../hooks/useLocation";
-import useNearestToilets from "../hooks/useNearestToilets";
+import useNearestToilet from "../hooks/useNearestToilet";
 import Compass from "../components/Compass";
 import { Container } from "@mui/material";
 
 function PageTinder() {
   const { error: errorLocation, location } = useLocation();
-  const { error: toiletError, nearestToilets } = useNearestToilets(location);
-
-  // TODO: Take closest toilet
-  const toilet = nearestToilets[0];
+  const { appendToIgnoredToilets, error: toiletError, toilet } = useNearestToilet(location);
 
   return (
     <Container
@@ -20,8 +17,14 @@ function PageTinder() {
         alignItems: "center",
       }}
     >
-      <Compass currentLocation={location} toiletLocation={toilet?.location} />
-      <ComToilet toilet={toilet} />
+      <Compass
+        currentLocation={location}
+        toiletLocation={toilet?.location}
+      />
+      <ComToilet
+        appendToIgnoredToilets={appendToIgnoredToilets}
+        toilet={toilet}
+      />
     </Container>
   );
 }

@@ -5,17 +5,19 @@ import Typography from '@mui/material/Typography';
 import TextField from "@mui/material/TextField";
 import StyleConst from "../style/StyleConst";
 import Button from "@mui/material/Button";
+import ActionCreateRating from "../action/ActionCreateRating";
 
-const ComRating = ({open, setOpen}) => {
+const ComRating = ({open, setOpen, toilet}) => {
   const [grade, setGrade] = React.useState(0);
-  const [text, setText] = React.useState('');
+  const [comment, setComment] = React.useState('');
 
   const sendRating = () => {
-    console.log(grade, text);
-
-    // TODO: Send rating to server
-
-    setOpen(false);
+    ActionCreateRating({
+      comment,
+      grade,
+      toilet,
+    })
+      .then(() => setOpen(false));
   };
 
   return (
@@ -73,8 +75,8 @@ const ComRating = ({open, setOpen}) => {
               label="Give a personal feedback"
               variant="outlined"
               fullWidth
-              value={text}
-              onChange={event => setText(event.target.value)}
+              value={comment}
+              onChange={event => setComment(event.target.value)}
             />
             <Box
               sx={{

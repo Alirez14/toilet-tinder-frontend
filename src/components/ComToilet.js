@@ -10,7 +10,7 @@ import StyleConst from "../style/StyleConst";
 import ComToiletRating from "./ComToiletRating";
 import ComRating from "./ComRating";
 
-const ComToilet = ({toilet}) => {
+const ComToilet = ({appendToIgnoredToilets, toilet}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,6 +25,7 @@ const ComToilet = ({toilet}) => {
       <ComRating
         open={open}
         setOpen={setOpen}
+        toilet={toilet}
       />
       <CardMedia
         component="img"
@@ -52,8 +53,12 @@ const ComToilet = ({toilet}) => {
         })}
       </CardContent>
       <CardActions sx={{ justifyContent: "space-around" }}>
-        <Button size="medium" onClick={() => setOpen(true)}>Rate</Button>
-        <Button size="medium">Next</Button>
+        <Button size="medium" onClick={() => setOpen(true)}>
+          Rate
+        </Button>
+        <Button size="medium" onClick={() => appendToIgnoredToilets(toilet.id)}>
+          Next
+        </Button>
       </CardActions>
     </Card>
   );

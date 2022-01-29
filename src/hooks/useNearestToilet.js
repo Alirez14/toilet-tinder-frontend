@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import ActionFetchToilets from "../action/ActionFetchToilets";
 
-const useNearestToilets = (ignoredToilets, location) => {
+const useNearestToilet = location => {
   const [error, setError] = useState(null);
   const [nearestToilets, setNearestToilets] = useState([]);
+  const [ignoredToilets, setIgnoredToilets] = useState([]);
+
+  const appendToIgnoredToilets = id => {
+    setIgnoredToilets(value => [...value, id]);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -15,13 +20,17 @@ const useNearestToilets = (ignoredToilets, location) => {
       }
       // ...
     }
+
     fetchData();
   }, [ignoredToilets, location]);
 
+  const toilet = nearestToilets.filter(toilet => !ignoredToilets.includes(toilet.id))[0];
+
   return {
+    appendToIgnoredToilets,
     error,
-    nearestToilets,
+    toilet,
   };
 };
 
-export default useNearestToilets;
+export default useNearestToilet;
