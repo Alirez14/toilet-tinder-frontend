@@ -26,7 +26,7 @@ const ComToilet = ({ appendToIgnoredToilets, toilet }) => {
       <CardMedia
         key={toilet?.id}
         component="img"
-        height="200"
+        height="300"
         image="https://source.unsplash.com/random/?toilet"
         alt="green iguana"
       />
