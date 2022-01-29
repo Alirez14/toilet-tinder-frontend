@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import StyleConst from "./style/StyleConst";
 import PageTinder from "./pages/PageTinder";

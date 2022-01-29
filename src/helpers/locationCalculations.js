@@ -1,6 +1,8 @@
 
 
 export const toiletBearing = function(currentLocation, toiletLocation) {
+    if (!currentLocation || !toiletLocation) return null;
+
     const {
         latitude: currLat,
         longitude: currLong,
@@ -20,6 +22,8 @@ export const toiletBearing = function(currentLocation, toiletLocation) {
 
 
 export const distance = function(currentLocation, toiletLocation) {
+    if (!currentLocation || !toiletLocation) return null;
+
     const {
         latitude: currLat,
         longitude: currLong,
@@ -36,6 +40,7 @@ export const distance = function(currentLocation, toiletLocation) {
     const radiant = 6371e3;
     const gammaSin = Math.sin(gamma1) * Math.sin(gamma2);
     const gammaCos = Math.cos(gamma1) * Math.cos(gamma2);
+    const distance = Math.acos(gammaSin + gammaCos * Math.cos(deltaLong)) * radiant;
 
-    return Math.acos(gammaSin + gammaCos * Math.cos(deltaLong)) * radiant;
+    return Math.floor(distance);
 };
