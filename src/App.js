@@ -23,7 +23,7 @@ function App() {
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-between',
         alignItems: 'center',
       }}
     >
@@ -34,6 +34,7 @@ function App() {
       <ComToilet
         toilet={toilet}
       />
+      <div />
     </Box>
   );
 }

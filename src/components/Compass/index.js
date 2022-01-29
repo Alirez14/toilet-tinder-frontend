@@ -4,12 +4,19 @@ import Section, {sectionWidth} from "./Section";
 import * as locationCalculations from "../../helpers/locationCalculations";
 
 
-const calculateHeadingLeft = function (currentLocation, width) {
+const calculateHeadingLeft = function (props) {
+  const {
+    bearing,
+    currentLocation,
+    width,
+  } = props;
+
   const zeroPoint = (sectionWidth - (width / 2));
+  const heading = currentLocation?.heading ?? bearing;
 
-  if (!currentLocation) return zeroPoint;
+  if (!currentLocation && !bearing) return zeroPoint;
 
-  const headingPercentage = currentLocation.heading / 360 * sectionWidth;
+  const headingPercentage = heading / 360 * sectionWidth;
 
   return zeroPoint + headingPercentage;
 };
@@ -25,7 +32,7 @@ const Compass = function (props) {
 
   const distance = locationCalculations.distance(currentLocation, toiletLocation);
   const bearing = locationCalculations.toiletBearing(currentLocation, toiletLocation);
-  const headingLeft = calculateHeadingLeft(currentLocation, width);
+  const headingLeft = calculateHeadingLeft({bearing, currentLocation, width});
 
   return (
     <Box

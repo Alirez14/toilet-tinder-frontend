@@ -20,6 +20,7 @@ const TargetNeedle = function ({distance}) {
       <Box
         sx={{
           fontSize: 14,
+          mt: '2px',
         }}
       >
         {distance}m
