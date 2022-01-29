@@ -9,15 +9,21 @@ import StyleConst from "../style/StyleConst";
 import useLocation from "../hooks/useLocation";
 import useNearestToilets from "../hooks/useNearestToilets";
 import * as locationCalculations from "../helpers/locationCalculations";
+import { Box } from "@mui/material";
 
-export default function ComToilet() {
-  const {error, location} = useLocation();
-  const {error, nearestToilets} = useNearestToilets(location);
+const ComToilet = () => {
+  const { errorLocation, location } = useLocation();
+  const { error, nearestToilets } = useNearestToilets(location);
 
   const toilet = nearestToilets[0];
-
-  const distance = locationCalculations.distance(location, toilet.location);
-  const bearing = locationCalculations.toiletBearing(location, toilet.location);
+  if (location) {
+    const distance = locationCalculations.distance(location, toilet.location);
+    const bearing = locationCalculations.toiletBearing(
+      location,
+      toilet.location
+    );
+    console.log(toilet, distance, bearing);
+  }
 
   return (
     <Card
@@ -30,22 +36,24 @@ export default function ComToilet() {
       <CardMedia
         component="img"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image={toilet?.image}
         alt="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Box>
+          <Typography variant="h5" component={"div"}>
+            {toilet?.name}
+          </Typography>
+          <Typography component={"div"} paragraph>
+            {toilet?.openingHours}
+          </Typography>
+        </Box>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <CardActions sx={{ justifyContent: "space-around" }}>
+        <Button size="medium">Start</Button>
+        <Button size="medium">Next</Button>
       </CardActions>
     </Card>
   );
-}
+};
+export default ComToilet;
